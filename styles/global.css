@@ -7,7 +7,8 @@
     --color-text: 12 5% 4%;
     --color-bg: 0 20% 95%;
     --color-border: 17 24% 90%; 
-
-		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
+    --gradient-from: #58D688;
+    --gradient-to: #4B73A7;
+		--astro-gradient: linear-gradient(0deg, var(--gradient-from), var(--gradient-to));
   }  
 }

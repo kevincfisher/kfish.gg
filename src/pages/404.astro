@@ -1,0 +1,23 @@
+---
+import '../../styles/global.css'
+import Layout from '../layouts/Layout.astro';
+
+const url = Astro.canonicalURL
+---
+
+<Layout title="Page Not Found | Kevin Fisher" description="The page you were looking for could not be found.">
+  <main>
+    <div class="flex flex-col items-center">
+      <h1 class="text-4xl mb-8">404 | Page not found</h1>
+      <a class="hover:underline" href="/">Return to homepage</a>
+    </div>
+  </main>
+</Layout>
+
+<style> 
+  main {
+		margin: auto;
+		padding: 1em;
+		max-width: 60ch;
+	}
+</style>
