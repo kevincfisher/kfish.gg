@@ -1,5 +1,8 @@
 ---
 import '../../styles/global.css'
+import githubImg from '../../assets/github.svg'
+import linkedInImg from '../../assets/linkedin.svg'
+
 export interface Props {
 	title: string;
 	description: string;
@@ -28,9 +31,17 @@ const url = Astro.canonicalURL
 	<body>
 		<header role="banner">
 			<div class="flex justify-between p-4">
-        <div><a href="/"><div class=" h-10 w-10 p-4 rounded-full text-center text-white bg-gradient-to-r from-[#4f39fa] to-[#da62c4]">KF</div></a></div>
+				<a href="/">
+				<span class="inline-flex items-center justify-center h-10 w-10 rounded-full hover:scale-105 bg-gradient-to-r from-[#4f39fa] to-[#da62c4]">
+					<span class="text-xs font-medium leading-none text-light">KF</span>
+				</span>	
+			</a>
+        <!-- <div><a href="/"><div class=" h-10 w-10 p-4 rounded-full text-center text-white hover:scale-105 bg-gradient-to-r from-[#4f39fa] to-[#da62c4] ">KF</div></a></div> -->
 				<div id="links">
-			
+			   <ul class="flex">
+					<li class="ml-4 mr-2"><a target="_blank" href="https://www.github.com/kevincfisher"><img class="hover:scale-105" alt="GitHub" src={githubImg}/></a></li>
+					<li class="ml-2 mr-4"><a target="_blank" href="https://www.linkedin.com/in/kevin-fisher-52188292/"><img class="hover:scale-105" alt="LinkedIn" src={linkedInImg}/></a></li>
+				 </ul>
 				</div>
 			</div>
 		</header>
