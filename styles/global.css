@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  :root {
+    --color-text: 12 5% 4%;
+    --color-bg: 0 20% 95%;
+    --color-border: 17 24% 90%; 
+
+		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
+  }  
+}
