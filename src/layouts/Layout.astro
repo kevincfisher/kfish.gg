@@ -10,6 +10,7 @@ export interface Props {
 
 const { title, description } = Astro.props as Props;
 const url = Astro.canonicalURL
+const currentYear = new Date().getFullYear()
 ---
 
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ const url = Astro.canonicalURL
 			</div>
 		</header>
 		<slot />
-		<footer role="contentinfo" class="border-t-1 border-black p-4 flex flex-row-reverse"><span class="text-sm">&copy; 2022 Kevin Fisher</span></footer>
+		<footer role="contentinfo" class="border-t-1 border-black p-4 flex flex-row-reverse"><span class="text-sm">&copy; {currentYear} Kevin Fisher</span></footer>
 	</body>
 </html>
 <style>
