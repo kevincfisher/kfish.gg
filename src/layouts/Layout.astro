@@ -3,6 +3,11 @@ import '../../styles/global.css'
 import githubImg from '/assets/github.svg'
 import linkedInImg from '/assets/linkedin.svg'
 
+import GithubIcon from '../components/GithubIcon.astro'
+import SunIcon from '../components/SunIcon.astro'
+import MoonIcon from '../components/MoonIcon.astro'
+import LinkedInIcon from '../components/LinkedInIcon.astro'
+
 export interface Props {
 	title: string;
 	description: string;
@@ -30,25 +35,26 @@ const currentYear = new Date().getFullYear()
 		<title>{title}</title>
 		<script defer data-domain="kfish.gg" src="https://plausible.io/js/plausible.js"></script>
 	</head>
-	<body>
+	<body class="dark:bg-slate-900">
 		<header role="banner">
 			<div class="flex justify-between p-4 items-center">
 				<a href="/">
 				<span class="inline-flex items-center justify-center h-10 w-10 rounded-full hover:scale-105 bg-gradient-to-r from-[#58D688] to-[#4B73A7]">
-					<span class="text-xs font-medium leading-none text-light">KF</span>
+					<span class="text-xs font-medium leading-none text-white">KF</span>
 				</span>	
 			</a>
-        <!-- <div><a href="/"><div class=" h-10 w-10 p-4 rounded-full text-center text-white hover:scale-105 bg-gradient-to-r from-[#4f39fa] to-[#da62c4] ">KF</div></a></div> -->
 				<div id="links">
 			   <ul class="flex">
-					<li class="ml-4 mr-2"><a target="_blank" href="https://www.github.com/kevincfisher"><img class="hover:scale-105" alt="GitHub" src={githubImg}/></a></li>
-					<li class="ml-2 mr-4"><a target="_blank" href="https://www.linkedin.com/in/kevin-fisher-52188292/"><img class="hover:scale-105" alt="LinkedIn" src={linkedInImg}/></a></li>
+					<li class="ml-4 mr-2"><a target="_blank" href="https://www.github.com/kevincfisher"><GithubIcon className="dark:text-white hover:scale-105" /></a></li>
+					<li class="ml-2 mr-4"><a target="_blank" href="https://www.linkedin.com/in/kevin-fisher-52188292/"><LinkedInIcon className="dark:text-white hover:scale-105" /></a></li>
+					<li class="hidden dark:block"><button onclick="window.toggleDarkMode()"><SunIcon className="text-amber-300 hover:scale-105" width="24" height="24"/></button></li>
+					<li class="block dark:hidden"><button onclick="window.toggleDarkMode()"><MoonIcon className="text-amber-300 hover:scale-105" width="24" height="24" /></button></li>
 				 </ul>
 				</div>
 			</div>
 		</header>
 		<slot />
-		<footer role="contentinfo" class="border-t-1 border-black p-4 flex flex-row-reverse"><span class="text-sm">&copy; {currentYear} Kevin Fisher</span></footer>
+		<footer role="contentinfo" class="p-4 flex flex-row-reverse"><span class="text-sm dark:text-white">&copy; {currentYear} Kevin Fisher</span></footer>
 	</body>
 </html>
 <style>
@@ -85,3 +91,17 @@ const currentYear = new Date().getFullYear()
 			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 </style>
+<script is:inline>
+	function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark')
+		localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light"
+	}
+	window.toggleDarkMode = toggleDarkMode
+	
+	if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+  
+</script>
